@@ -7,15 +7,15 @@ steps:
   commands:
   - . /opt/sgxsdk/environment
   - . /root/.cargo/env
-  - cd sgx && SGX_MODE=SW XARGO_SGX=1 make -C memchr-sgx-test
-  - cd sgx && SGX_MODE=SW XARGO_SGX=1 make -C memchr-sgx-test-libc
+  - (cd sgx && SGX_MODE=SW XARGO_SGX=1 make -C memchr-sgx-test)
+  - (cd sgx && SGX_MODE=SW XARGO_SGX=1 make -C memchr-sgx-test-libc)
 
 - name: sim-test
   image: baiduxlab/sgx-rust:1604-1.1.0
   commands:
   - . /opt/sgxsdk/environment
-  - cd sgx/memchr-sgx-test/bin && ./app | tee result.txt && grep " 0 failed" result.txt
-  - cd sgx/memchr-sgx-test-libc/bin && ./app | tee result.txt && grep " 0 failed" result.txt
+  - (cd sgx/memchr-sgx-test/bin && ./app | tee result.txt && grep " 0 failed" result.txt)
+  - (cd sgx/memchr-sgx-test-libc/bin && ./app | tee result.txt && grep " 0 failed" result.txt)
 
 node:
   instance: sgx
@@ -31,8 +31,8 @@ steps:
   commands:
   - . /opt/sgxsdk/environment
   - . /root/.cargo/env
-  - cd sgx && XARGO_SGX=1 make -C memchr-sgx-test
-  - cd sgx && XARGO_SGX=1 make -C memchr-sgx-test-libc
+  - (cd sgx && XARGO_SGX=1 make -C memchr-sgx-test)
+  - (cd sgx && XARGO_SGX=1 make -C memchr-sgx-test-libc)
 
 - name: hw-test
   image: baiduxlab/sgx-rust:1604-1.1.0
@@ -46,8 +46,8 @@ steps:
   - . /opt/sgxsdk/environment
   - ls -l /dev/isgx
   - ls -l /var/run/aesmd/aesm.socket
-  - cd sgx/memchr-sgx-test/bin && ./app | tee result.txt && grep " 0 failed" result.txt
-  - cd sgx/memchr-sgx-test-libc/bin && ./app | tee result.txt && grep " 0 failed" result.txt
+  - (cd sgx/memchr-sgx-test/bin && ./app | tee result.txt && grep " 0 failed" result.txt)
+  - (cd sgx/memchr-sgx-test-libc/bin && ./app | tee result.txt && grep " 0 failed" result.txt)
 
 volumes:
 - name: isgx
@@ -71,15 +71,15 @@ steps:
   commands:
   - . /opt/sgxsdk/environment
   - . /root/.cargo/env
-  - cd sgx && SGX_MODE=SW XARGO_SGX=1 make -C memchr-sgx-test
-  - cd sgx && SGX_MODE=SW XARGO_SGX=1 make -C memchr-sgx-test-libc
+  - (cd sgx && SGX_MODE=SW XARGO_SGX=1 make -C memchr-sgx-test)
+  - (cd sgx && SGX_MODE=SW XARGO_SGX=1 make -C memchr-sgx-test-libc)
 
 - name: sim-test
   image: baiduxlab/sgx-rust:1804-1.1.0
   commands:
   - . /opt/sgxsdk/environment
-  - cd sgx/memchr-sgx-test/bin && ./app | tee result.txt && grep " 0 failed" result.txt
-  - cd sgx/memchr-sgx-test-libc/bin && ./app | tee result.txt && grep " 0 failed" result.txt
+  - (cd sgx/memchr-sgx-test/bin && ./app | tee result.txt && grep " 0 failed" result.txt)
+  - (cd sgx/memchr-sgx-test-libc/bin && ./app | tee result.txt && grep " 0 failed" result.txt)
 
 node:
   instance: sgx
@@ -95,8 +95,8 @@ steps:
   commands:
   - . /opt/sgxsdk/environment
   - . /root/.cargo/env
-  - cd sgx && XARGO_SGX=1 make -C memchr-sgx-test
-  - cd sgx && XARGO_SGX=1 make -C memchr-sgx-test-libc
+  - (cd sgx && XARGO_SGX=1 make -C memchr-sgx-test)
+  - (cd sgx && XARGO_SGX=1 make -C memchr-sgx-test-libc)
 
 - name: hw-test
   image: baiduxlab/sgx-rust:1804-1.1.0
@@ -110,8 +110,8 @@ steps:
   - . /opt/sgxsdk/environment
   - ls -l /dev/isgx
   - ls -l /var/run/aesmd/aesm.socket
-  - cd sgx/memchr-sgx-test/bin && ./app | tee result.txt && grep " 0 failed" result.txt
-  - cd sgx/memchr-sgx-test-libc/bin && ./app | tee result.txt && grep " 0 failed" result.txt
+  - (cd sgx/memchr-sgx-test/bin && ./app | tee result.txt && grep " 0 failed" result.txt)
+  - (cd sgx/memchr-sgx-test-libc/bin && ./app | tee result.txt && grep " 0 failed" result.txt)
 
 volumes:
 - name: isgx
@@ -135,15 +135,15 @@ steps:
   commands:
   - . /opt/sgxsdk/environment
   - . /root/.cargo/env
-  - SGX_MODE=SW make -C sgx/memchr-sgx-test
-  - SGX_MODE=SW make -C sgx/memchr-sgx-test-libc
+  - (SGX_MODE=SW make -C sgx/memchr-sgx-test)
+  - (SGX_MODE=SW make -C sgx/memchr-sgx-test-libc)
 
 - name: sim-test
   image: baiduxlab/sgx-rust:1604-1.1.0
   commands:
   - . /opt/sgxsdk/environment
-  - cd sgx/memchr-sgx-test/bin && ./app | tee result.txt && grep " 0 failed" result.txt
-  - cd sgx/memchr-sgx-test-libc/bin && ./app | tee result.txt && grep " 0 failed" result.txt
+  - (cd sgx/memchr-sgx-test/bin && ./app | tee result.txt && grep " 0 failed" result.txt)
+  - (cd sgx/memchr-sgx-test-libc/bin && ./app | tee result.txt && grep " 0 failed" result.txt)
 
 node:
   instance: sgx
@@ -159,8 +159,8 @@ steps:
   commands:
   - . /opt/sgxsdk/environment
   - . /root/.cargo/env
-  - make -C sgx/memchr-sgx-test
-  - make -C sgx/memchr-sgx-test-libc
+  - (make -C sgx/memchr-sgx-test)
+  - (make -C sgx/memchr-sgx-test-libc)
 
 - name: hw-test
   image: baiduxlab/sgx-rust:1604-1.1.0
@@ -174,8 +174,8 @@ steps:
   - . /opt/sgxsdk/environment
   - ls -l /dev/isgx
   - ls -l /var/run/aesmd/aesm.socket
-  - cd sgx/memchr-sgx-test/bin && ./app | tee result.txt && grep " 0 failed" result.txt
-  - cd sgx/memchr-sgx-test-libc/bin && ./app | tee result.txt && grep " 0 failed" result.txt
+  - (cd sgx/memchr-sgx-test/bin && ./app | tee result.txt && grep " 0 failed" result.txt)
+  - (cd sgx/memchr-sgx-test-libc/bin && ./app | tee result.txt && grep " 0 failed" result.txt)
 
 volumes:
 - name: isgx
@@ -199,15 +199,15 @@ steps:
   commands:
   - . /opt/sgxsdk/environment
   - . /root/.cargo/env
-  - SGX_MODE=SW make -C sgx/memchr-sgx-test
-  - SGX_MODE=SW make -C sgx/memchr-sgx-test-libc
+  - (SGX_MODE=SW make -C sgx/memchr-sgx-test)
+  - (SGX_MODE=SW make -C sgx/memchr-sgx-test-libc)
 
 - name: sim-test
   image: baiduxlab/sgx-rust:1804-1.1.0
   commands:
   - . /opt/sgxsdk/environment
-  - cd sgx/memchr-sgx-test/bin && ./app | tee result.txt && grep " 0 failed" result.txt
-  - cd sgx/memchr-sgx-test-libc/bin && ./app | tee result.txt && grep " 0 failed" result.txt
+  - (cd sgx/memchr-sgx-test/bin && ./app | tee result.txt && grep " 0 failed" result.txt)
+  - (cd sgx/memchr-sgx-test-libc/bin && ./app | tee result.txt && grep " 0 failed" result.txt)
 
 node:
   instance: sgx
@@ -223,8 +223,8 @@ steps:
   commands:
   - . /opt/sgxsdk/environment
   - . /root/.cargo/env
-  - make -C sgx/memchr-sgx-test
-  - make -C sgx/memchr-sgx-test-libc
+  - (make -C sgx/memchr-sgx-test)
+  - (make -C sgx/memchr-sgx-test-libc)
 
 - name: hw-test
   image: baiduxlab/sgx-rust:1804-1.1.0
@@ -238,8 +238,8 @@ steps:
   - . /opt/sgxsdk/environment
   - ls -l /dev/isgx
   - ls -l /var/run/aesmd/aesm.socket
-  - cd sgx/memchr-sgx-test/bin && ./app | tee result.txt && grep " 0 failed" result.txt
-  - cd sgx/memchr-sgx-test-libc/bin && ./app | tee result.txt && grep " 0 failed" result.txt
+  - (cd sgx/memchr-sgx-test/bin && ./app | tee result.txt && grep " 0 failed" result.txt)
+  - (cd sgx/memchr-sgx-test-libc/bin && ./app | tee result.txt && grep " 0 failed" result.txt)
 
 volumes:
 - name: isgx
